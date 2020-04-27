@@ -5,21 +5,25 @@
 
 
 {% block content %}
-    {% for room in rooms %}
-        <h3>
-            <a href="{% url "rooms:detail" room.pk %}">
-                {{room.name}} / ${{room.price}}
-            </a>
-        </h3>
-    {% endfor %} 
+<div class="container rounded-xl bg-gray-800 h-50vh mx-auto mt-24 mb-16 bg-cover bg-center"
+    style="background-image: url('static/img/main_img.jpg')">
 
-    <h5>
+</div>
+{% for room in rooms %}
+<h3>
+    <a href="{% url "rooms:detail" room.pk %}">
+        {{room.name}} / ${{room.price}}
+    </a>
+</h3>
+{% endfor %}
+
+<h5>
     {% if page_obj.has_previous %}
-        <a href="?page={{page.previous_page_number}}">Previous</a>
+    <a href="?page={{page.previous_page_number}}">Previous</a>
     {% endif %}
-    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}  
+    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
     {% if page_obj.has_next %}
-        <a href="?page={{page_obj.next_page_number}}">Next</a>
+    <a href="?page={{page_obj.next_page_number}}">Next</a>
     {% endif %}
-    </h5>
+</h5>
 {% endblock content %}
