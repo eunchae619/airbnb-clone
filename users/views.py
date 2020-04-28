@@ -14,7 +14,7 @@ from . import models
 
 class LoginView(View):
     def get(self, request):
-        form = forms.LoginForm(initial={"email": "eunchae@a.com"})
+        form = forms.LoginForm()
         return render(request, "users/login.html", {"form": form})
 
     def post(self, request):
@@ -38,11 +38,6 @@ class SignUpView(FormView):
     template_name = "users/signup.html"
     form_class = forms.SignUpForm
     success_url = reverse_lazy("core:home")
-    initial = {
-        "first_name": "Kim",
-        "last_name": "Eunchae",
-        "email": "eunchae619@naver.com",
-    }
 
     def form_valid(self, form):
         form.save()

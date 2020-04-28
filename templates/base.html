@@ -19,9 +19,9 @@
                 <img class="w-16" src="{% static 'img/airbnb_logo.png' %}" alt="logo">
             </a>
             {% block search_bar %}
-            <form method="get" action="{% url "rooms:search" %}" class="w-full">
+            <form method="get" action="{% url "rooms:search" %}" class="w-full flex items-center">
                 <input
-                    class="search-box border px-5 py-2 text text-gray-600 placeholder-gray-600 font-semibold rounded-sm w-full shadow hover:shadow-lg focus:outline-none"
+                    class="search-box border px-5 py-2 text text-gray-600 placeholder-gray-600 font-medium rounded-sm w-full shadow hover:shadow-lg focus:outline-none my-0"
                     type="text" name="city" placeholder="Search By City">
             </form>
             {% endblock search_bar %}
