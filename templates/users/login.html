@@ -8,10 +8,12 @@ Login
 
 
 {% block content %}
-{% include "partials/social_login.html" %}
-<form method="POST" action="{% url 'users:login' %}">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button>Login</button>
-</form>
+<div class="container mx-auto my-10 flex flex-col items-center border p-6 border-gray-400 md:w-1/2 lg:w-2/5 xl:w-1/4">
+    {% include "partials/social_login.html" %}
+    <form method="POST" action="{% url 'users:login' %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button>Login</button>
+    </form>
+</div>
 {% endblock content %}
