@@ -30,9 +30,29 @@ input {
 }
 
 form {
-    input {
+    .input {
         @apply mb-3;
+
+        &.has_error {
+            input {
+                @apply bg-red-200 border-gray-600;
+
+                :focus {
+                    @apply border-gray-600;
+                }
+
+                :-internal-autofill-selected {
+                    @apply bg-red-200 border-gray-600;
+                }
+            }
+        }
     }
 }
+
+.error {
+    @apply text-red-700 font-medium text-sm;
+}
+
+
 
 @tailwind utilities;
