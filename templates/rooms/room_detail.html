@@ -2,7 +2,7 @@
 
 
 {% block page_title %}
-    {{room.name}}
+{{room.name}}
 {% endblock page_title %}
 
 {% block content %}
@@ -11,22 +11,22 @@
     <h3>{{room.description}}</h3>
 </div>
 <div>
-    <h2>By : {{room.host.username}}
+    <h2>By : <a href="{{room.host.get_absolute_url}}">{{room.host.username}}</a>
         {% if room.host.superhost %}
-            (superhost)
+        (superhost)
         {% endif %}
     </h2>
     <h3>Amenities</h3>
     {% for a in room.amenities.all %}
-        <li>{{a}}</li>
+    <li>{{a}}</li>
     {% endfor %}
     <h3>Facilities</h3>
     {% for f in room.facilities.all %}
-        <li>{{f}}</li>
+    <li>{{f}}</li>
     {% endfor %}
     <h3>House Rules</h3>
     {% for r in room.house_rules.all %}
-        <li>{{r}}</li>
+    <li>{{r}}</li>
     {% endfor %}
 </div>
-{% endblock %} 
+{% endblock %}

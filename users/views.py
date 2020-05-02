@@ -5,7 +5,8 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from django.core.files.base import ContentFile
-from django.views.generic.edit import FormView
+from django.views.generic import FormView, DetailView, UpdateView
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib import messages
 from . import forms
 from . import models
@@ -200,3 +201,35 @@ def kakao_callback(request):
     except KakaoException as e:
         messages.error(request, e)
         return redirect(reverse("users:login"))
+
+
+class UserProfileView(DetailView):
+    model = models.User
+    context_object_name = "user_obj"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["hello"] = "hello!"
+        return context
+
+
+class UpdateProfileView(UpdateView):
+    template_name = "users/update-profile.html"
+    model = models.User
+    fields = (
+        "first_name",
+        "last_name",
+        "gender",
+        "bio",
+        "language",
+        "currency",
+    )
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
+# from django.contrib.auth.forms import PasswordChangeForm
+class UpdatePasswordView(PasswordChangeView):
+
+    template_name = "users/update-password.html"

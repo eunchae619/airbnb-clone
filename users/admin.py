@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from . import models
+from rooms import models as rooms_models
 
 # Register your models here.
 
