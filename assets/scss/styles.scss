@@ -36,7 +36,11 @@ select {
 }
 
 input {
-    @apply py-3
+    @apply py-3;
+}
+
+.check_box {
+    @apply w-auto;
 }
 
 textarea {

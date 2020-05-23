@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import CheckboxInput
 from django_countries.fields import CountryField
 from . import models
 
@@ -27,3 +28,34 @@ class SearchForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
+
+
+class RoomUpdateForm(forms.ModelForm):
+    """Form definition for MODELNAME."""
+
+    class Meta:
+        """Meta definition for MODELNAMEform."""
+
+        model = models.Room
+        fields = (
+            "name",
+            "description",
+            "country",
+            "city",
+            "price",
+            "address",
+            "guests",
+            "beds",
+            "bedrooms",
+            "bath",
+            "check_in",
+            "check_out",
+            "instant_book",
+            "room_type",
+            "amenities",
+            "facilities",
+            "house_rules",
+        )
+        widgets = {
+            "instant_book": CheckboxInput(attrs={"class": "check_box"}),
+        }
