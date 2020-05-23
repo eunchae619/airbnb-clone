@@ -59,3 +59,15 @@ class RoomUpdateForm(forms.ModelForm):
         widgets = {
             "instant_book": CheckboxInput(attrs={"class": "check_box"}),
         }
+
+
+class CreatePhotoForm(forms.ModelForm):
+    class Meta:
+        model = models.Photo
+        fields = ("caption", "file")
+
+    def save(self, pk, *args, **kwargs):
+        photo = super().save(commit=False)
+        room = models.Room.objects.get(pk=pk)
+        photo.room = room
+        photo.save()
